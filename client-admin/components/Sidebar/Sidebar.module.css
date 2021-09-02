@@ -1,0 +1,41 @@
+.container {
+  @apply h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-80;
+}
+.subContainer {
+  @apply bg-white h-full rounded-2xl;
+}
+
+.brandContainer {
+  @apply flex items-center justify-center pt-6;
+}
+.brandText {
+  @apply text-4xl font-bold text-primary-600;
+}
+
+.nav {
+  @apply mt-6;
+}
+
+.linkContainer {
+  @apply w-full font-thin uppercase flex justify-start items-center p-4 pl-7 my-2;
+  @apply text-gray-500;
+  @apply hover:text-primary-500;
+}
+
+.linkIconContainer {
+  @apply text-center;
+}
+
+.linkName {
+  @apply mx-4 text-sm font-normal;
+}
+
+.linkIconContainer i {
+  @apply w-5;
+}
+
+.linkContainer.active {
+  @apply border-r-4 border-primary-500;
+  @apply text-primary-500;
+  @apply bg-gradient-to-r from-white to-primary-100;
+}
