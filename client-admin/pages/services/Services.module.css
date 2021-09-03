@@ -1,0 +1,12 @@
+.container {
+  @apply my-3 w-full grid grid-cols-2 gap-8;
+}
+.subContainer {
+  @apply col-span-2 xl:col-span-1;
+}
+.card {
+  @apply bg-white shadow rounded-lg;
+}
+.headerContainer {
+  @apply p-4;
+}

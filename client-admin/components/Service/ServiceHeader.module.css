@@ -1,0 +1,13 @@
+.container {
+  @apply flex items-center;
+}
+.title {
+  @apply text-xl font-semibold;
+}
+.btn {
+  @apply ml-auto py-2 px-4 rounded-lg flex items-center;
+  @apply bg-primary-500 text-white hover:bg-primary-700;
+}
+.btnText {
+  @apply mr-3;
+}
