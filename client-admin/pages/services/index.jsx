@@ -9,6 +9,7 @@ import ServiceHeader from "../../components/Service/ServiceHeader";
 import ServiceInput from "../../components/Service/ServiceInput";
 import { apis } from "../../utils/endpoints";
 import styles from "./Services.module.css";
+import ServiceError from "../../components/Service/ServiceError";
 
 export default function Services({ data }) {
   const { admin } = useGetAdmin(data.user);
@@ -32,11 +33,7 @@ export default function Services({ data }) {
                   showInput={toggleInput}
                 />
               </div>
-              {toggleInput === "service" && error && (
-                <div className="p-4">
-                  <p className="bg-danger-100 text-danger-500 border border-danger-500 p-2 rounded-lg">{error}</p>
-                </div>
-              )}
+              {toggleInput === "service" && error && <ServiceError error={error} />}
               {toggleInput === "service" && (
                 <ServiceInput
                   type="service"
@@ -63,11 +60,7 @@ export default function Services({ data }) {
                   showInput={toggleInput}
                 />
               </div>
-              {toggleInput === "symptom" && error && (
-                <div className="p-4">
-                  <p className="bg-danger-100 text-danger-500 border border-danger-500 p-2 rounded-lg">{error}</p>
-                </div>
-              )}
+              {toggleInput === "symptom" && error && <ServiceError error={error} />}
               {toggleInput === "symptom" && (
                 <ServiceInput
                   type="symptom"

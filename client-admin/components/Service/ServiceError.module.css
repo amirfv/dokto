@@ -1,0 +1,6 @@
+.container {
+  @apply p-4;
+}
+.errorText {
+  @apply bg-danger-100 text-danger-500 border border-danger-500 p-2 rounded-lg;
+}
