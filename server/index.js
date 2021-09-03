@@ -19,6 +19,7 @@ mongoose
 
 app.use("/api/auth", require("./routes/user"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/symptom", require("./routes/symptom"));
 
 app.use(errorHandler);
 

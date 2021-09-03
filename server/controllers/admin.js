@@ -10,14 +10,7 @@ exports.create = async (req, res, next) => {
   if (validate.error) return next(new ErrorResponse(validate.message, 400));
 
   try {
-    const newAdmin = new Admin({
-      _id: req.user,
-      email,
-      firstName,
-      lastName,
-      phone,
-      dob,
-    });
+    const newAdmin = new Admin({ _id: req.user, email, firstName, lastName, phone, dob });
     const admin = await newAdmin.save();
     res.cookie("role", admin.role);
     res.status(201).json({ message: "Admin created", data: admin });
