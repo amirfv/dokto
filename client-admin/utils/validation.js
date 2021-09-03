@@ -19,3 +19,11 @@ export const validateLogin = (input) => {
 
   return { error: false, message: "OK" };
 };
+
+export const validateService = (input) => {
+  const { name, description, type } = input;
+  if (!name) return { error: true, message: `The ${type} name cannot be emptied!` };
+  if (!description) return { error: true, message: `The ${type} description cannot be emptied!` };
+
+  return { error: false, message: "OK" };
+};

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
-import LayoutMain from "../../components/LayoutMain";
 import useGetAdmin from "../../hooks/useGetAdmin";
-import useService from "../../hooks/useService";
+import useServiceAdd from "../../hooks/useServiceAdd";
+import LayoutMain from "../../components/LayoutMain";
 import ServiceTable from "../../components/Service/ServiceTable";
 import ServiceHeader from "../../components/Service/ServiceHeader";
 import ServiceInput from "../../components/Service/ServiceInput";
@@ -12,7 +12,7 @@ import styles from "./Services.module.css";
 
 export default function Services({ data }) {
   const { admin } = useGetAdmin(data.user);
-  const { toggleInput, setToggleInput, input, setInput, handleInput, handleShowInput } = useService();
+  const { toggleInput, error, input, handleSubmit, handleInput, handleShowInput } = useServiceAdd();
 
   return (
     <>
@@ -32,6 +32,11 @@ export default function Services({ data }) {
                   showInput={toggleInput}
                 />
               </div>
+              {toggleInput === "service" && error && (
+                <div className="p-4">
+                  <p className="bg-danger-100 text-danger-500 border border-danger-500 p-2 rounded-lg">{error}</p>
+                </div>
+              )}
               {toggleInput === "service" && (
                 <ServiceInput
                   type="service"
@@ -40,6 +45,7 @@ export default function Services({ data }) {
                   handleShowInput={handleShowInput}
                   placeholderName="Blood Test"
                   placeholderDesc="The blood test is to check the overall health condition based on the blood..."
+                  handleSubmit={handleSubmit}
                 />
               )}
               {toggleInput !== "service" && <ServiceTable type="service" />}
@@ -57,6 +63,11 @@ export default function Services({ data }) {
                   showInput={toggleInput}
                 />
               </div>
+              {toggleInput === "symptom" && error && (
+                <div className="p-4">
+                  <p className="bg-danger-100 text-danger-500 border border-danger-500 p-2 rounded-lg">{error}</p>
+                </div>
+              )}
               {toggleInput === "symptom" && (
                 <ServiceInput
                   type="symptom"
@@ -65,6 +76,7 @@ export default function Services({ data }) {
                   handleShowInput={handleShowInput}
                   placeholderName="Mild Fever"
                   placeholderDesc="The common fever that average people easily catch up..."
+                  handleSubmit={handleSubmit}
                 />
               )}
               {toggleInput !== "symptom" && <ServiceTable type="symptom" />}

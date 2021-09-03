@@ -1,6 +1,6 @@
 import styles from "./ServiceInput.module.css";
 
-export default function ServiceInput({ type, input, handleInput, handleShowInput, placeholderName, placeholderDesc }) {
+export default function ServiceInput({ type, input, handleInput, handleShowInput, handleSubmit, placeholderName, placeholderDesc }) {
   return (
     <div className={styles.container}>
       <div className={styles.inputContainer}>
@@ -23,7 +23,9 @@ export default function ServiceInput({ type, input, handleInput, handleShowInput
         <button id={type} className={styles.btnCancel} onClick={handleShowInput}>
           Cancel
         </button>
-        <button className={styles.btnSave}>Save {type}</button>
+        <button className={styles.btnSave} onClick={handleSubmit}>
+          Save {type}
+        </button>
       </div>
     </div>
   );
