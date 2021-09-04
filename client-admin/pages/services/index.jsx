@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import axios from "axios";
 import useGetAdmin from "../../hooks/useGetAdmin";
-import useServiceAdd from "../../hooks/useServiceAdd";
+import useService from "../../hooks/useService";
 import LayoutMain from "../../components/LayoutMain";
 import ServiceTable from "../../components/Service/ServiceTable";
 import ServiceHeader from "../../components/Service/ServiceHeader";
@@ -13,7 +13,7 @@ import ServiceError from "../../components/Service/ServiceError";
 
 export default function Services({ data }) {
   const { admin } = useGetAdmin(data.user);
-  const { toggleInput, error, input, handleSubmit, handleInput, handleShowInput } = useServiceAdd();
+  const { toggleInput, error, input, symptoms, handleSubmit, handleInput, handleShowInput, handleEdit, handleRemove } = useService();
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function Services({ data }) {
                   handleSubmit={handleSubmit}
                 />
               )}
-              {toggleInput !== "service" && <ServiceTable type="service" />}
+              {toggleInput !== "service" && <ServiceTable type="service" data={[]} handleEdit={handleEdit} handleRemove={handleRemove} />}
             </div>
           </div>
 
@@ -72,7 +72,7 @@ export default function Services({ data }) {
                   handleSubmit={handleSubmit}
                 />
               )}
-              {toggleInput !== "symptom" && <ServiceTable type="symptom" />}
+              {toggleInput !== "symptom" && <ServiceTable type="symptom" data={symptoms} handleEdit={handleEdit} handleRemove={handleRemove} />}
             </div>
           </div>
         </div>

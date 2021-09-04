@@ -9,8 +9,8 @@ export default function useGetAdmin(user) {
   }, []);
 
   const getAdmin = async () => {
-    const { data: admin } = await apis.adminFindOne(user);
-    setAdmin(admin.data[0]);
+    const response = await apis.adminFindOne(user);
+    setAdmin(response);
   };
 
   return { admin, setAdmin, getAdmin };

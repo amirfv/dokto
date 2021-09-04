@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 exports.isAuthenticated = (req, res, next) => {
   try {
     const token = req.cookies.t;
-    console.log(token);
     if (!token) return res.status(401).json({ error: true, message: "Unauthorized" });
 
     const verified = jwt.verify(token, process.env.JWT_SECRET);

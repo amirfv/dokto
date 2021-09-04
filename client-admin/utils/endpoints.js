@@ -12,6 +12,7 @@ export const apis = {
   urlLogout: `${URL}/auth/logout`,
   urlLoggedIn: `${URL}/auth/loggedin`,
   urlAdmin: `${URL}/admin`,
+  urlSymptom: `${URL}/symptom`,
 
   register: async (data) => {
     let response;
@@ -45,5 +46,64 @@ export const apis = {
     }
     return response;
   },
-  adminFindOne: async (data) => await axios.get(`${apis.urlAdmin}/${data}`, config),
+  adminFindOne: async (data) => {
+    let response;
+    try {
+      const { data: admin } = await axios.get(`${apis.urlAdmin}/${data}`, config);
+      response = admin.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  symptomCreate: async (data) => {
+    let response;
+    try {
+      const { data: symptom } = await axios.post(apis.urlSymptom, data, config);
+      response = symptom.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  symptomFindAll: async () => {
+    let response;
+    try {
+      const { data: symptoms } = await axios.get(apis.urlSymptom);
+      response = symptoms.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  symptomFindOne: async (data) => {
+    let response;
+    try {
+      const { data: symptom } = await axios.get(`${apis.urlSymptom}/${data}`);
+      response = symptom.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  symptomUpdate: async (data, id) => {
+    let response;
+    try {
+      const { data: symptom } = await axios.put(`${apis.urlSymptom}/${id}`, data, config);
+      response = symptom.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  symptomRemove: async (data) => {
+    let response;
+    try {
+      const { data: symptom } = await axios.delete(`${apis.urlSymptom}/${data}`, config);
+      response = symptom.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
 };

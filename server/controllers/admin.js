@@ -27,14 +27,14 @@ exports.findAll = async (req, res) => {
     res.status(200).json({ message: "All admin", data: allAdmin });
   } catch (error) {
     console.error(error);
-    res.status(500).json();
+    return next(new ErrorResponse("Something went wrong", 500));
   }
 };
 
 exports.findOne = async (req, res) => {
   const { userId } = req.params;
   try {
-    const findAdmin = await Admin.find({ _id: userId });
+    const findAdmin = await Admin.findById(userId);
     res.status(200).json({ message: "Found admin", data: findAdmin });
   } catch (error) {
     console.error(error);
