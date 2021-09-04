@@ -6,7 +6,7 @@
 }
 
 .brandContainer {
-  @apply flex items-center justify-center pt-6;
+  @apply flex flex-col items-center justify-center pt-6;
 }
 .brandText {
   @apply text-4xl font-bold text-primary-600;

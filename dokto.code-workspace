@@ -4,7 +4,10 @@
       "path": "server"
     },
     {
-      "path": "client-admin"
+      "path": "client_admin"
+    },
+    {
+      "path": "client_provider"
     }
   ],
   "settings": {}

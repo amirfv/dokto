@@ -25,6 +25,7 @@ export default function Sidebar() {
       <div className={styles.subContainer}>
         <div className={styles.brandContainer}>
           <h1 className={styles.brandText}>dokto.</h1>
+          <p className="mt-1 text-gray-400">Admin Dashboard</p>
         </div>
         <nav className={styles.nav}>
           <div>{renderPageLinks}</div>

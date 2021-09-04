@@ -9,7 +9,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-const origin = ["http://localhost:3000"];
+const clientDomainAdmin = process.env.CLIENT_DOMAIN_ADMIN;
+const clientDomainProvider = process.env.CLIENT_DOMAIN_PROVIDER;
+
+const origin = [clientDomainAdmin, clientDomainProvider];
 app.use(cors({ origin, credentials: true }));
 
 mongoose
