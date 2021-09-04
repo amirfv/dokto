@@ -13,7 +13,7 @@ import ServiceError from "../../components/Service/ServiceError";
 
 export default function Services({ data }) {
   const { admin } = useGetAdmin(data.user);
-  const { toggleInput, error, input, symptoms, handleSubmit, handleInput, handleShowInput, handleEdit, handleRemove } = useService();
+  const { toggleInput, error, input, symptoms, services, handleSubmit, handleInput, handleShowInput, handleEdit, handleRemove } = useService();
 
   return (
     <>
@@ -31,6 +31,7 @@ export default function Services({ data }) {
                   btnName="Add New Service"
                   handleShowInput={handleShowInput}
                   showInput={toggleInput}
+                  data={services}
                 />
               </div>
               {toggleInput === "service" && error && <ServiceError error={error} />}
@@ -45,7 +46,7 @@ export default function Services({ data }) {
                   handleSubmit={handleSubmit}
                 />
               )}
-              {toggleInput !== "service" && <ServiceTable type="service" data={[]} handleEdit={handleEdit} handleRemove={handleRemove} />}
+              {toggleInput !== "service" && <ServiceTable type="service" data={services} handleEdit={handleEdit} handleRemove={handleRemove} />}
             </div>
           </div>
 
@@ -58,6 +59,7 @@ export default function Services({ data }) {
                   btnName="Add New Symptom"
                   handleShowInput={handleShowInput}
                   showInput={toggleInput}
+                  data={symptoms}
                 />
               </div>
               {toggleInput === "symptom" && error && <ServiceError error={error} />}

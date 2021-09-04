@@ -12,7 +12,7 @@ export default function ServiceTable({ type, data, handleEdit, handleRemove }) {
         <table className={styles.table}>
           <thead className={styles.thead}>
             <tr>
-              <th className={`w-1/5 ${styles.theadName}`}>{type} Name</th>
+              <th className={`w-1/5 ${styles.theadName}`}>Name</th>
               <th className={`w-3/5 ${styles.theadName}`}>Description</th>
               <th className={`w-1/5 ${styles.theadName}`}>Action</th>
             </tr>

@@ -5,7 +5,7 @@ const { isAuthenticated, isAdmin } = require("../middlewares/auth");
 router.post("/", isAuthenticated, isAdmin, create);
 router.get("/", findAll);
 router.get("/:symptomId", findOne);
-router.put("/:symptomId", update);
-router.delete("/:symptomId", remove);
+router.put("/:symptomId", isAuthenticated, isAdmin, update);
+router.delete("/:symptomId", isAuthenticated, isAdmin, remove);
 
 module.exports = router;

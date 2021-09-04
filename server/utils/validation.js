@@ -30,3 +30,10 @@ exports.validateSymptomInput = (body) => {
   if (!description) return { error: true, message: "Symptom description cannot be emptied!" };
   return { error: false, message: "OK" };
 };
+
+exports.validateServiceInput = (body) => {
+  const { name, description } = body;
+  if (!name) return { error: true, message: "Service name cannot be emptied!" };
+  if (!description) return { error: true, message: "Service description cannot be emptied!" };
+  return { error: false, message: "OK" };
+};

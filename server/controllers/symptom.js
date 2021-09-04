@@ -51,17 +51,17 @@ exports.update = async (req, res, next) => {
     res.status(201).json({ message: "Update symptom", data: updatedSymptom });
   } catch (error) {
     console.error(error);
-    res.status(500).json();
+    return next(new ErrorResponse("Something went wrong", 500));
   }
 };
 
-exports.remove = async (req, res) => {
+exports.remove = async (req, res, next) => {
   const { symptomId } = req.params;
   try {
     const removedSymptom = await Symptom.findByIdAndDelete(symptomId);
     res.status(200).json({ message: "Remove symptom", data: removedSymptom });
   } catch (error) {
     console.error(error);
-    res.status(500).json();
+    return next(new ErrorResponse("Something went wrong", 500));
   }
 };

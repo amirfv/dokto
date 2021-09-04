@@ -13,7 +13,9 @@ export const apis = {
   urlLoggedIn: `${URL}/auth/loggedin`,
   urlAdmin: `${URL}/admin`,
   urlSymptom: `${URL}/symptom`,
+  urlService: `${URL}/service`,
 
+  // AUTH
   register: async (data) => {
     let response;
     try {
@@ -36,6 +38,8 @@ export const apis = {
   },
   logout: async () => await axios.post(apis.urlLogout, {}, config),
   loggedIn: async () => await axios.get(apis.urlLoggedIn, config),
+
+  // ADMIN
   adminCreate: async (data) => {
     let response;
     try {
@@ -56,6 +60,8 @@ export const apis = {
     }
     return response;
   },
+
+  // SYMPTOM
   symptomCreate: async (data) => {
     let response;
     try {
@@ -101,6 +107,58 @@ export const apis = {
     try {
       const { data: symptom } = await axios.delete(`${apis.urlSymptom}/${data}`, config);
       response = symptom.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+
+  // SERVICE
+  serviceCreate: async (data) => {
+    let response;
+    try {
+      const { data: service } = await axios.post(apis.urlService, data, config);
+      response = service.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  serviceFindAll: async () => {
+    let response;
+    try {
+      const { data: service } = await axios.get(apis.urlService);
+      response = service.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  serviceFindOne: async (data) => {
+    let response;
+    try {
+      const { data: service } = await axios.get(`${apis.urlService}/${data}`);
+      response = service.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  serviceUpdate: async (data, id) => {
+    let response;
+    try {
+      const { data: service } = await axios.put(`${apis.urlService}/${id}`, data, config);
+      response = service.data;
+    } catch (error) {
+      response = { error: true, message: error.response.data.error };
+    }
+    return response;
+  },
+  serviceRemove: async (data) => {
+    let response;
+    try {
+      const { data: service } = await axios.delete(`${apis.urlService}/${data}`, config);
+      response = service.data;
     } catch (error) {
       response = { error: true, message: error.response.data.error };
     }

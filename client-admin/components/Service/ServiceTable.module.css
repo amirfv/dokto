@@ -2,7 +2,7 @@
   @apply shadow overflow-hidden border-b border-gray-200 sm:rounded-lg;
 }
 .table {
-  @apply max-w-full table-fixed divide-y divide-gray-200;
+  @apply max-w-full w-full table-auto divide-y divide-gray-200;
 }
 .thead {
   @apply bg-gray-50;
