@@ -3,7 +3,7 @@ import styles from "./ServiceHeader.module.css";
 export default function ServiceHeader({ type, data, title, btnName, showInput, handleShowInput }) {
   return (
     <div className={styles.container}>
-      <div className="flex items-center">
+      <div className={styles.headerContainer}>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.badge}>{data.length} Data Found</p>
       </div>
